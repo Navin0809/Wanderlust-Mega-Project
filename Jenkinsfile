@@ -22,14 +22,14 @@ pipeline {
                 }
             }
         }
-        /*
+        
         stage("Workspace cleanup"){
             steps{
                 script{
                     cleanWs()
                 }
             }
-        }*/
+        }
         
         stage('Git: Code Checkout') {
             steps {

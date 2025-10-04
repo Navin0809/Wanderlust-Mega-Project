@@ -69,7 +69,7 @@ pipeline {
                 }
             }
         }
-        
+        /*
         stage('Exporting environment variables') {
             parallel{
                 stage("Backend env setup"){
@@ -93,16 +93,16 @@ pipeline {
                 }
             }
         }
-        
+        */
         stage("Docker: Build Images"){
             steps{
                 script{
                         dir('backend'){
-                            docker_build("wanderlust-backend-beta","${params.BACKEND_DOCKER_TAG}","trainwithshubham")
+                            docker_build("wanderlust-backend","${params.BACKEND_DOCKER_TAG}","ysanavee")
                         }
                     
                         dir('frontend'){
-                            docker_build("wanderlust-frontend-beta","${params.FRONTEND_DOCKER_TAG}","trainwithshubham")
+                            docker_build("wanderlust-frontend","${params.FRONTEND_DOCKER_TAG}","ysanavee")
                         }
                 }
             }
@@ -111,8 +111,8 @@ pipeline {
         stage("Docker: Push to DockerHub"){
             steps{
                 script{
-                    docker_push("wanderlust-backend-beta","${params.BACKEND_DOCKER_TAG}","trainwithshubham") 
-                    docker_push("wanderlust-frontend-beta","${params.FRONTEND_DOCKER_TAG}","trainwithshubham")
+                    docker_push("wanderlust-backend","${params.BACKEND_DOCKER_TAG}","ysanavee") 
+                    docker_push("wanderlust-frontend","${params.FRONTEND_DOCKER_TAG}","ysanavee")
                 }
             }
         }
